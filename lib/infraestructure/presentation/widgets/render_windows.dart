@@ -1,10 +1,11 @@
 import 'package:access_key_app/config/util/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class RenderWindows extends StatelessWidget {
   const RenderWindows({
     super.key,
-    required this.child,
+    this.child,
     this.backgroundColor = kBackgroundColor,
     this.padding,
     this.floatingActionButton,
@@ -17,13 +18,17 @@ class RenderWindows extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: floatingActionButton,
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(padding ?? size.width * .1),
+          width: double.infinity,
+          height: double.infinity,
+          padding: EdgeInsets.only(
+            left: padding ?? 5.h,
+            right: padding ?? 5.h,
+          ),
           child: child,
         ),
       ),

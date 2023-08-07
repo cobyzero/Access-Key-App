@@ -1,19 +1,20 @@
 import 'package:access_key_app/config/util/colors.dart';
+import 'package:access_key_app/domain/entitys/user_entity.dart';
 import 'package:access_key_app/infraestructure/presentation/widgets/render_button.dart';
 import 'package:access_key_app/infraestructure/presentation/widgets/render_windows.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sizer/sizer.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return RenderWindows(
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryColor,
-        onPressed: () => context.go("/home"),
+        onPressed: () => context.go("/administration"),
         child: const Icon(
           Icons.person,
           color: Colors.black,
@@ -25,14 +26,26 @@ class MainScreen extends StatelessWidget {
             children: [
               Icon(
                 Icons.lock,
-                size: size.width * .5,
+                size: 50.w,
                 color: kPrimaryColor,
               ),
               SizedBox(
-                height: size.height * .1,
+                height: 10.h,
               ),
               RenderButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.go(
+                    "/viewUser",
+                    extra: UserEntity(
+                      name: "Sebastian",
+                      lastName: "Abal Salazar",
+                      identification: "93283823",
+                      phone: "+32323233",
+                      lastEntry: DateTime.now(),
+                      status: 0,
+                    ),
+                  );
+                },
                 text: "Analizar QR",
               )
             ],
