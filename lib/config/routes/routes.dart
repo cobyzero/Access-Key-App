@@ -6,7 +6,7 @@ import 'package:access_key_app/infraestructure/presentation/screens/view_user_sc
 import 'package:go_router/go_router.dart';
 
 GoRouter goRouter = GoRouter(
-  initialLocation: "/main",
+  initialLocation: "/administration",
   routes: [
     GoRoute(
       path: "/main",
